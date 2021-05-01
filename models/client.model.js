@@ -13,7 +13,10 @@ var clientSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-})
+    },
+    {
+        timestamps: true,
+    });
 
 // custom validation for email
 clientSchema.path('email').validate((val) => {
