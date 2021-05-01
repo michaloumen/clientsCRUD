@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require("email-validator");
+const { isCpf } = require('iscpf');
+
+/* import { cpf } from 'cpf-cnpj-validator'; */
 
 const clientSchema = new mongoose.Schema({
     fullName:{
@@ -11,16 +14,16 @@ const clientSchema = new mongoose.Schema({
     },
     cpf:{
         type:String,
-        required: true
     },
-    },
-    {
-        timestamps: true,
     });
 
 // custom validation for email
 clientSchema.path('email').validate((val) => {
     return validator.validate(val);
 },'Invalid Email');
+
+clientSchema.path('cpf').validate((val) => {
+    return isCpf(val);
+},'Invalid Cpf');
 
 mongoose.model('Client',clientSchema);

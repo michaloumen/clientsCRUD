@@ -29,7 +29,7 @@ app.engine('hbs',expressHandlebars({
 app.set('view engine','hbs');
 
 app.listen(5000,() => {
-    console.log("Server is listening on Port 5000");
+    console.log("Server is listening on http://localhost:5000/client");
 })
 
 app.use('/client',clientController);
