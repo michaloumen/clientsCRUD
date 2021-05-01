@@ -24,7 +24,7 @@ router.post("/",(req,res) => {
 
 function insertRecord(req,res)
 {
-   var client = new Client();
+   const client = new Client();
 
    client.fullName = req.body.fullName;
 
